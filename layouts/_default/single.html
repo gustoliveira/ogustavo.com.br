@@ -1,0 +1,40 @@
+{{ define "main" }}
+
+<div class="post-body" >
+
+  <div class="post-header" >
+    <a class="post-title" >{{ .Title }}</a>
+    <a class="post-title-date" datetime="{{ .Date.Format "01-02-2006" }}">{{ .Date.Format "2006-01-02" }}</a>
+  </div>
+
+  <div class="post-content">
+    <article> {{ .Content }} </article>
+  </div>
+
+  <div class="post-footer" >
+    <a class="post-footer-text" href="/">← Back to Home Page</a>
+    <a class="post-footer-text">Salvador Bahia, Brazil</a>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const container = document.querySelector('.post-header');
+      const title = document.querySelector('.post-title');
+      const date = document.querySelector('.post-title-date');
+
+      function checkOverflow() {
+          if (date.scrollWidth + title.scrollWidth >= container.clientWidth || date.scrollHeight > title.scrollHeight) {
+              date.style.display = 'none';
+          } else {
+              date.style.display = 'block';
+          }
+      }
+
+      checkOverflow();
+      window.addEventListener('resize', checkOverflow);
+  });
+</script>
+
+{{ end }}

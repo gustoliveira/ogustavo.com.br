@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gustavo de Oliveira Ferreira</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Gustavo de Oliveira Ferreira</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Feb 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fun with Overflowing Integers</title>
+      <link>http://localhost:1313/posts/fun-with-overflowing-integers/</link>
+      <pubDate>Fri, 21 Feb 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/fun-with-overflowing-integers/</guid>
+      <description>&lt;p&gt;Today, I finally got around to fixing a fundamental issue with klog (my command line tool for time tracking): if someone were to use klog on a daily basis for a few trillion years, there would be an increased risk of incorrect computations due to integer overflow. In particular, after precisely &lt;strong&gt;9223372036854775807&lt;/strong&gt; minutes worth of time tracking, the total time amount would wrap around and continue at &lt;strong&gt;-9223372036854775808&lt;/strong&gt; minutes. I wouldn’t go as far to call this a time bomb ticking right there, but you know, time is money, and that’s where things get serious (especially in this ballpark). In all fairness, while the practical value of this fix is rather academic, it was mainly a fun exercise to dive into the bits and bobs of overflowing integers. I created a small Go library called safemath for this purpose, which I published on its own.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About me</title>
+      <link>http://localhost:1313/about-me/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about-me/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/vulgogustavo.jpg#floatleft&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hello! I&amp;rsquo;m Gustavo =)&lt;/p&gt;&#xA;&lt;p&gt;I’m a &lt;strong&gt;Software Engineer&lt;/strong&gt; working based in Salvador Bahia, Brazil. I work as Mobile Developer at Oxeanbits and I’m Computer Science Student at UFBA.&lt;/p&gt;&#xA;&lt;p&gt;My programming journey started in 2017 during High School. I was in a Scientific Initiation project and was necessary to create a small automation program with Arduino and it was love at first sight. The project didn’t worked well, but those nights where I was trying to create the script changed my life.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

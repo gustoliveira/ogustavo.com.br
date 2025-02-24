@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Fun with Overflowing Integers</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+</head>
+<body>
+	
+
+<div class="post-body" >
+
+  <div class="post-header" >
+    <a class="post-title" >Fun with Overflowing Integers</a>
+    <a class="post-title-date" datetime="02-21-2025">2025-02-21</a>
+  </div>
+
+  <div class="post-content">
+    <article> <p>Today, I finally got around to fixing a fundamental issue with klog (my command line tool for time tracking): if someone were to use klog on a daily basis for a few trillion years, there would be an increased risk of incorrect computations due to integer overflow. In particular, after precisely <strong>9223372036854775807</strong> minutes worth of time tracking, the total time amount would wrap around and continue at <strong>-9223372036854775808</strong> minutes. I wouldn’t go as far to call this a time bomb ticking right there, but you know, time is money, and that’s where things get serious (especially in this ballpark). In all fairness, while the practical value of this fix is rather academic, it was mainly a fun exercise to dive into the bits and bobs of overflowing integers. I created a small Go library called safemath for this purpose, which I published on its own.</p>
+<h3 id="integer-overflows">Integer overflows</h3>
+<p>Signed integers are basic (primitive) types, whose values are represented by fixed-width bit patterns. The minimum and maximum values depend on the machine architecture and on the declared width. On 64-bit systems, for instance, the default numeric range stretches from <strong>-9223372036854775808</strong> (lowest possible value) to <strong>9223372036854775807</strong> (largest possible value). When using built-in mathematical operators such as <strong>+</strong> or <strong>*</strong>, the respective computations are carried out via simple bitwise instructions. That, however, does not include any logical checks whether the calculation would fit into the representable value range. If the result were to exceed the boundaries, it would do so silently, and in a way that wouldn’t make any sense from an arithmetic point of</p>
+<p>One way to detect overflows is to run explicit checks on the operands ahead of time. For a computation with two operands <strong>A</strong> and <strong>B</strong>, an overflow would necessarily occur if:</p>
+<ul>
+<li><strong>Aabs &gt; (Max - Babs)</strong> when adding</li>
+<li><strong>Aabs &gt; (Max / Babs)</strong> when</li>
+</ul>
+<p>One tricky thing is that the minimum and maximum numbers don’t have the same absolute value, which requires extra caution: for example, if one of the operands happens to be the minimum number, we cannot trivially compute the inverse value by multiplying by -1, and we also have to make sure that we don’t divide the minimum value by <strong>-1</strong>. It’s worse for multiplications, because while <strong>½Min * 2</strong> is okay, <strong>½Min * -2</strong> is not.</p>
+<p>If overflow is defined behaviour, we can also carry out the computation naively, and then run a check on the result. In this case, an overflow can be detected by inspecting the signs of the operands and the resulting value. The overflow conditions are:
+when adding two operands, which both have the same sign, the result must have the same sign
+when multiplying two operands,
+the result must have a positive sign if both operands have the same sign, or otherwise the result must have a negative sign,
+and the according inverse operation <strong>Res / B = A</strong> must match.</p>
+ </article>
+  </div>
+
+  <div class="post-footer" >
+    <a class="post-footer-text" href="/">← Back to Home Page</a>
+    <a class="post-footer-text">Salvador Bahia, Brazil</a>
+  </div>
+
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const container = document.querySelector('.post-header');
+      const title = document.querySelector('.post-title');
+      const date = document.querySelector('.post-title-date');
+
+      function checkOverflow() {
+          if (date.scrollWidth + title.scrollWidth >= container.clientWidth || date.scrollHeight > title.scrollHeight) {
+              date.style.display = 'none';
+          } else {
+              date.style.display = 'block';
+          }
+      }
+
+      checkOverflow();
+      window.addEventListener('resize', checkOverflow);
+  });
+</script>
+
+
+	<footer class="site-footer">
+	 <p>Copyright &copy; 2025 <a class="site-footer" href="http://localhost:1313/">Gustavo de Oliveira Ferreira</a>. All rights reserved. </p>
+</footer>
+
+</body>
+</html>

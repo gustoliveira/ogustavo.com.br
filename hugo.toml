@@ -1,0 +1,12 @@
+baseURL = 'https://www.ogustavo.com.br/'
+languageCode = 'en-us'
+title = 'Gustavo de Oliveira Ferreira'
+
+theme = 'blank'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+
