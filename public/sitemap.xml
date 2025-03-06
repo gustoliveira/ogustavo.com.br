@@ -2,19 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/posts/fun-with-overflowing-integers/</loc>
+    <loc>https://www.ogustavo.com.br/</loc>
     <lastmod>2025-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://www.ogustavo.com.br/posts/</loc>
     <lastmod>2025-02-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-02-21T00:00:00+00:00</lastmod>
+    <loc>https://www.ogustavo.com.br/about-me/</loc>
   </url><url>
-    <loc>http://localhost:1313/about-me/</loc>
+    <loc>https://www.ogustavo.com.br/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://www.ogustavo.com.br/tags/</loc>
   </url>
 </urlset>

@@ -2,7 +2,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: auto; }
+  margin-top: auto;
+}
 
 body {
   font-family: 'JetBrains Mono';
@@ -285,4 +286,3 @@ img[src$='#floatleft'] {
   color: black;
   min-height: 22px;
 }
-
