@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Gustavo de Oliveira Ferreira</title>
-    <link>https://www.ogustavo.com.br/</link>
+    <link>https://gustoliveira.github.io/personal-site/</link>
     <description>Recent content on Gustavo de Oliveira Ferreira</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 01 Jan 0001 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.ogustavo.com.br/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://gustoliveira.github.io/personal-site/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About me</title>
-      <link>https://www.ogustavo.com.br/about-me/</link>
+      <link>https://gustoliveira.github.io/personal-site/about-me/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://www.ogustavo.com.br/about-me/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;https://www.ogustavo.com.br/images/vulgogustavo.jpg#floatleft&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hello! I&amp;rsquo;m Gustavo =)&lt;/p&gt;&#xA;&lt;p&gt;I’m a &lt;strong&gt;Software Engineer&lt;/strong&gt; working based in Salvador Bahia, Brazil. I work as Mobile Developer at Oxeanbits and I’m Computer Science Student at UFBA.&lt;/p&gt;&#xA;&lt;p&gt;My programming journey started in 2017 during High School. I was in a Scientific Initiation project and was necessary to create a small automation program with Arduino and it was love at first sight. The project didn’t worked well, but those nights where I was trying to create the script changed my life.&lt;/p&gt;</description>
+      <guid>https://gustoliveira.github.io/personal-site/about-me/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://gustoliveira.github.io/personal-site/images/vulgogustavo.jpg#floatleft&#34; alt=&#34;&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hello! I&amp;rsquo;m Gustavo =)&lt;/p&gt;&#xA;&lt;p&gt;I’m a &lt;strong&gt;Software Engineer&lt;/strong&gt; working based in Salvador Bahia, Brazil. I work as Mobile Developer at Oxeanbits and I’m Computer Science Student at UFBA.&lt;/p&gt;&#xA;&lt;p&gt;My programming journey started in 2017 during High School. I was in a Scientific Initiation project and was necessary to create a small automation program with Arduino and it was love at first sight. The project didn’t worked well, but those nights where I was trying to create the script changed my life.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
