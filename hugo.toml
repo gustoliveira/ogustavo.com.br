@@ -9,4 +9,5 @@ theme = 'blank'
     [markup.goldmark.parser]
       [markup.goldmark.parser.attribute]
         block = true
+        title = true
 
