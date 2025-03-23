@@ -3,15 +3,20 @@
   <a class="site-title">Gustavo de Oliveira Ferreira</a>
   <a class="site-title anim-typewriter">Software Engineer</a>
   <div class="divider"></div>
-  <a class="site-subtitle">Mobile Developer at Oxeanbits & Computer Science Student at UFBA</a>
-  <a class="site-subtitle-phrase">I believe in the power of technology to transform simple ideas into incredible</a>
+  <a class="site-subtitle">Mobile Developer @ Oxeanbits & Computer Science Student @ UFBA</a>
+  <a class="site-subtitle-phrase">I believe in the power of technology to transform simple ideas into incredible tools</a>
   <a class="site-subtitle-2" href="/about-me">More about me <strong>*here*</strong></a>
 </div>
 
 <div class="site-body">
 
   <section class="block">
-    <div class="block-title">Projects</div>
+    <div class="block-title tooltip">
+      Projects
+      <span class="tooltip-text">
+        Here are some of the projects I've been working on lately to study and learn. You can find more on my github profile
+      </span>
+    </div>
     <div class="block-body">
 
       <div class="block-item">
@@ -43,7 +48,12 @@
   </section>
 
   <section class="block">
-    <div class="block-title">Recent Posts</div>
+    <div class="block-title tooltip">
+      Recent Posts
+      <span class="tooltip-text">
+        Things I learn, things I do and things I think. Most of what's share here reflects my opinions, which often change over time. You might find something interesting along the way
+      </span>
+    </div>
     <div class="block-body">
       {{ range first 5 (where .Site.RegularPages "Type" "posts") }}
       <div class="block-item">
@@ -58,16 +68,21 @@
   </section>
 
   <section class="block">
-    <div class="block-title">Miscellaneous</div>
+    <div class="block-title tooltip">
+      Miscellaneous
+      <span class="tooltip-text">
+        A collection of things I want to share or write and is not *exactly* a blog post. Can have random things here, but I hope you find something interesting
+      </span>
+    </div>
     <div class="block-body">
-      {{ range first 5 (where .Site.RegularPages "Type" "miscellaneous") }}
+      <!-- {{ range first 5 (where .Site.RegularPages "Type" "miscellaneous") }} -->
       <div class="block-item">
         <a href="{{ .Permalink }}" class="block-item-link">
           <div class="block-item-title">{{ .Title }}</div>
           <div class="block-description">{{ .Params.Subtitle }}</div>
         </a>
       </div>
-      {{ end }}
+      <!-- {{ end }} -->
     </div>
   </section>
 
