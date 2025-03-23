@@ -51,6 +51,10 @@ code.hljs {
   font-weight: 700;
 }
 
+mjx-math.MJX-TEX {
+  font-size: 110%;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;

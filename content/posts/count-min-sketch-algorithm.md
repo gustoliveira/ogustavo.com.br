@@ -5,6 +5,8 @@ draft: false
 comments:
   - text: "If the overflow happens on the lower end of the range, it's technically called 'underflow'"
   - text: "In C++ for example, signed integer overflow is undefined behaviour"
+params:
+    math: true
 ---
 
 In many real-world applications, we encounter scenarios where we need to analyze a continuous stream of events. Consider these examples:
@@ -20,7 +22,7 @@ A naive approach might involve using hash tables or binary search trees.  Each t
 
 However, these simple approaches run into problems when dealing with massive datasets:
 
-*   **Space Complexity:** Hash tables and binary search trees both have a linear space complexity, O(n), where n is the number of unique events.  This means the memory required grows linearly with the number of distinct items in the stream.
+*   **Space Complexity:** Hash tables and binary search trees both have a linear space complexity, \(O(n)\), where n is the number of unique events.  This means the memory required grows linearly with the number of distinct items in the stream.
 *   **Limited Space:** What if we have a restricted amount of memory available?  We need a data structure that can handle massive data streams while using a sub-linear amount of space.
 
 ### Enter the Count-Min Sketch
@@ -145,27 +147,29 @@ class CountMinSketch:
 
 Because the Count-Min Sketch is a probabilistic data structure, there's a chance of error in our frequency estimates. The accuracy of the CMS is controlled by two parameters:
 
-*   **ε (epsilon):**  Represents the error factor in the frequency estimate (the precision of the data structure).
-*   **δ (delta):** Represents the probability of error (the chance that the estimate exceeds the error specified by ε).
+*   **\(\epsilon\) (epsilon):**  Represents the error factor in the frequency estimate (the precision of the data structure).
+*   **\(\delta\) (delta):** Represents the probability of error (the chance that the estimate exceeds the error specified by ε).
 
-The dimensions of the matrix (width `w` and depth `d`) are determined by these parameters:
+The dimensions of the matrix (width \({w}\) and depth \({d}\)) are determined by these parameters:
 
-*   width  `w =  ⌈e / ε⌉`
-*   depth `d = ⌈ln 1 / δ⌉`
+*   width \(w = \lceil \dfrac{e}{\epsilon} \rceil\)
+*   depth \(d = \lceil \ln \dfrac{1}{\delta} \rceil\)
 
-Where `e` is Euler's number (approximately 2.71828).
+
+Where \(e\) is Euler's number (approximately 2.71828).
 
 **Guarantee:**
 
-If we add `m` elements to the CMS, and `â` is the estimated count of an element `x`, and `a` is the actual count of `x`, then:
+If we add \({m}\) elements to the CMS, and \({a'}\) is the estimated count of an element \({x}\), and \({a}\) is the actual count of \({x}\), then:
 
-`Pr(â <= a + ε * m) >= 1 - δ`
+\[Pr({a'} \leq {a} + \epsilon \times {m}) \geq 1 - \delta \]
 
-In other words, with probability at least `1 - δ`, our estimate `â` will be no more than `ε * m` greater than the true count `a`.
+
+In other words, with probability at least \(1 - \delta\), our estimate \({a'}\) will be no more than \(\epsilon \times {m}\) greater than the true count \({a}\).
 
 ### Conclusion
 
-The Count-Min Sketch provides an efficient way to estimate event frequencies in massive data streams using sub-linear space. While it is a probabilistic data structure and thus introduces some error, the error can be controlled by adjusting the parameters ε and δ to suit the specific application's requirements. This makes it a valuable tool for various applications, including trend analysis, anomaly detection, and data mining.
+The Count-Min Sketch provides an efficient way to estimate event frequencies in massive data streams using sub-linear space. While it is a probabilistic data structure and thus introduces some error, the error can be controlled by adjusting the parameters \(\epsilon\) and \(\delta\) to suit the specific application's requirements. This makes it a valuable tool for various applications, including trend analysis, anomaly detection, and data mining.
 
 ### References
 
