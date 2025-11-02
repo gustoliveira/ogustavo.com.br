@@ -82,8 +82,16 @@ th {
   font-weight: bold;
 }
 
-tbody tr:hover {
+tbody tr:hover td,
+tbody tr:hover th,
+thead tr:hover td,
+thead tr:hover th {
   background-color: var(--primary-color-light);
+}
+
+td.column-highlight,
+th.column-highlight {
+  background-color: var(--primary-color-light) !important;
 }
 
 td:first-child {

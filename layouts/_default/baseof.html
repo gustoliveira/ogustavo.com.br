@@ -18,6 +18,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const tables = document.querySelectorAll('table');
+        tables.forEach(table => {
+          const cells = table.querySelectorAll('td, th');
+          cells.forEach(cell => {
+            cell.addEventListener('mouseenter', function() {
+              const cellIndex = Array.from(this.parentElement.children).indexOf(this);
+              const rows = table.querySelectorAll('tr');
+              rows.forEach(row => {
+                const targetCell = row.children[cellIndex];
+                if (targetCell) {
+                  targetCell.classList.add('column-highlight');
+                }
+              });
+            });
+            cell.addEventListener('mouseleave', function() {
+              const cellIndex = Array.from(this.parentElement.children).indexOf(this);
+              const rows = table.querySelectorAll('tr');
+              rows.forEach(row => {
+                const targetCell = row.children[cellIndex];
+                if (targetCell) {
+                  targetCell.classList.remove('column-highlight');
+                }
+              });
+            });
+          });
+        });
+      });
+    </script>
   </head>
   <body>
     {{ block "main" . }}{{ end }}
