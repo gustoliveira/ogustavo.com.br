@@ -23,7 +23,10 @@ A naive approach might involve using hash tables or binary search trees.  Each t
 However, these simple approaches run into problems when dealing with massive datasets:
 
 *   **Space Complexity:** Hash tables and binary search trees both have a linear space complexity, \(O(n)\), where n is the number of unique events.  This means the memory required grows linearly with the number of distinct items in the stream.
-*   **Limited Space:** What if we have a restricted amount of memory available?  We need a data structure that can handle massive data streams while using a sub-linear amount of space.
+*   **Limited Space:** What if we have a restricted amount of memory available?  We need a data structure that can handle massive data streams while using a *sub-linear* amount of space.
+
+{{< chartjs id="complexityChart" url="/personal-site/data/count-min-sketch-algorithm-complexity-growth.json" title="Growth Rates Comparison" xlabel="Input Size (n)" ylabel="Operations (q)" width="80%" >}}
+{{< /chartjs >}}
 
 ### Enter the Count-Min Sketch
 
@@ -167,11 +170,46 @@ If we add \({m}\) elements to the CMS, and \({a'}\) is the estimated count of an
 
 In other words, with probability at least \(1 - \delta\), our estimate \({a'}\) will be no more than \(\epsilon \times {m}\) greater than the true count \({a}\).
 
+### Benchmarks
+
+**1. Memory Usage Comparison**
+
+The primary motivation for using a Count-Min Sketch is space efficiency. To demonstrate this, I compared the memory consumption of a Count-Min Sketch against standard approaches: a **Python dictionary (Hash Table)** and a **Binary Search Tree (BST)**.
+
+As shown in the graph below, the difference is stark. As the number of unique elements in the stream grows from 0 to 50,000:
+
+{{< chartjs id="count-min-sketch-algorithm-memory-benchmark-chart" url="/personal-site/data/count-min-sketch-algorithm-memory-benchmark.json" title="Memory Usage Comparison" xlabel="Number of Distinct Elements" ylabel="Memory Usage (KB)" width="80%" >}}
+{{< /chartjs >}}
+
+- Hash Tables and BSTs exhibit linear memory growth \({O(n)}\). Every new unique element requires new memory allocation.
+Of course, the Hash Table space complexity depends on the implementation and how to handle collisions. But we have a expected behavior of size. As we add new elements, the hash performance starts to degrade, and than, in order to keep the performance, it creates a new bigger table with nem hash functions and redistribute the sizes the elements. That's the reason we see some big increases at some points.
+
+    - Notice the line representing the Hash Table, it increases in sudden vertical jumps rather than a smooth diagonal. This is standard behavior for hash maps. As the table fills up and hits its load factor, i.e, Load Factor = (Number of Unique Elements) / (Number of Buckets)*, the implementation automatically allocates a new, larger block of memory (usually doubling the size) and rehashes the existing elements into this new space. These allocation events create the visible "staircase" pattern in memory usage.
+
+- Count-Min Sketch maintains a constant memory footprint. Once the width and depth are initialized, the structure does not grow, regardless of how many items are processed.
+
+**2. Insertion Speed**
+
+While CMS saves massive amounts of memory, there is a computational trade-off. "There is no free lunch" in algorithm design.
+
+- **Hash Table**: Extremely fast insertion (near 0 on the Y-axis) because it typically requires only a single hash calculation and memory access.
+
+- **BST**: Shows significant instability (spikes), likely due to tree rebalancing operations as new nodes are added.
+
+- **Count-Min Sketch**: The insertion is the slowest (higher on the Y-axis). This is expected because for every element added, the algorithm must compute \({d}\) distinct hash functions (where \({d}\) is the depth of the matrix) and update \({d}\) counters.
+    - Although insertion in the Count-Min Sketch performs \(d\) operations, this value is fixed at initialization based on the desired error probability \(\delta\). Since \(d\) does not grow with the number of processed elements \(n\), the asymptotic complexity for insertions and queries is constant \({O(1)}\) relative to the stream size.
+    - Despite being computationally heavier than a simple Hash Table, the CMS insertion time is predictable and stable compared to the jitter seen in tree-based structures.
+
+{{< chartjs id="count-min-sketch-algorithm-insertion-speed-benchmark-chart" url="/personal-site/data/count-min-sketch-algorithm-insertion-speed-benchmark.json" title="Insertion Speed" xlabel="Number of Distinct Elements" ylabel="Time (Seconds)" width="80%" >}}
+{{< /chartjs >}}
+
 ### Conclusion
 
 The Count-Min Sketch provides an efficient way to estimate event frequencies in massive data streams using sub-linear space. While it is a probabilistic data structure and thus introduces some error, the error can be controlled by adjusting the parameters \(\epsilon\) and \(\delta\) to suit the specific application's requirements. This makes it a valuable tool for various applications, including trend analysis, anomaly detection, and data mining.
 
 ### References
+
+*   CORMEN, Thomas H. et al. **Introduction to Algorithms**. 3. ed. Cambridge, MA: MIT Press, 2009.
 
 *   CORMODE, G.; MUTHUKRISHNAN, S. **An improved data stream summary: the count-min sketch and its applications. Journal of Algorithms**, v. 55, n. 1, p. 58-75, abr. 2005.
 

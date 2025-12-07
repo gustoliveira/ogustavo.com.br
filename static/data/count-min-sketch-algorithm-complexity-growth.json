@@ -1,0 +1,37 @@
+{
+    "labels": [500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000],
+    "datasets": [
+        {
+            "label": "Superlinear (O(n²))",
+            "data": [500, 605, 720, 845, 980, 1125, 1280, 1445, 1620, 1805, 2000],
+            "borderColor": "#E63946",
+            "backgroundColor": "#E63946",
+            "borderWidth": 2,
+            "borderDash": [5, 5],
+            "pointRadius": 0,
+            "fill": false,
+            "tension": 0.4
+        },
+        {
+            "label": "Linear (O(n))",
+            "data": [500, 550, 600, 650, 700, 750, 800, 850, 900, 950, 1000],
+            "borderColor": "#3D5A80",
+            "backgroundColor": "#3D5A80",
+            "borderWidth": 2,
+            "pointRadius": 0,
+            "fill": false,
+            "tension": 0
+        },
+        {
+            "label": "Sublinear (O(√n))",
+            "data": [447, 469, 490, 510, 529, 548, 566, 583, 600, 616, 632],
+            "borderColor": "#2D6A4F",
+            "backgroundColor": "#2D6A4F",
+            "borderWidth": 2,
+            "borderDash": [2, 2],
+            "pointRadius": 0,
+            "fill": false,
+            "tension": 0.4
+        }
+    ]
+}
