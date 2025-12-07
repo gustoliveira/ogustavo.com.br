@@ -25,7 +25,7 @@ However, these simple approaches run into problems when dealing with massive dat
 *   **Space Complexity:** Hash tables and binary search trees both have a linear space complexity, \(O(n)\), where n is the number of unique events.  This means the memory required grows linearly with the number of distinct items in the stream.
 *   **Limited Space:** What if we have a restricted amount of memory available?  We need a data structure that can handle massive data streams while using a *sub-linear* amount of space.
 
-{{< chartjs id="complexityChart" url="/personal-site/data/count-min-sketch-algorithm-complexity-growth.json" title="Growth Rates Comparison" xlabel="Input Size (n)" ylabel="Operations (q)" width="80%" >}}
+{{< chartjs id="complexityChart" url="/data/count-min-sketch-algorithm-complexity-growth.json" title="Growth Rates Comparison" xlabel="Input Size (n)" ylabel="Operations (q)" width="80%" >}}
 {{< /chartjs >}}
 
 ### Enter the Count-Min Sketch
@@ -178,7 +178,7 @@ The primary motivation for using a Count-Min Sketch is space efficiency. To demo
 
 As shown in the graph below, the difference is stark. As the number of unique elements in the stream grows from 0 to 50,000:
 
-{{< chartjs id="count-min-sketch-algorithm-memory-benchmark-chart" url="/personal-site/data/count-min-sketch-algorithm-memory-benchmark.json" title="Memory Usage Comparison" xlabel="Number of Distinct Elements" ylabel="Memory Usage (KB)" width="80%" >}}
+{{< chartjs id="count-min-sketch-algorithm-memory-benchmark-chart" url="/data/count-min-sketch-algorithm-memory-benchmark.json" title="Memory Usage Comparison" xlabel="Number of Distinct Elements" ylabel="Memory Usage (KB)" width="80%" >}}
 {{< /chartjs >}}
 
 - Hash Tables and BSTs exhibit linear memory growth \({O(n)}\). Every new unique element requires new memory allocation.
@@ -200,7 +200,7 @@ While CMS saves massive amounts of memory, there is a computational trade-off. "
     - Although insertion in the Count-Min Sketch performs \(d\) operations, this value is fixed at initialization based on the desired error probability \(\delta\). Since \(d\) does not grow with the number of processed elements \(n\), the asymptotic complexity for insertions and queries is constant \({O(1)}\) relative to the stream size.
     - Despite being computationally heavier than a simple Hash Table, the CMS insertion time is predictable and stable compared to the jitter seen in tree-based structures.
 
-{{< chartjs id="count-min-sketch-algorithm-insertion-speed-benchmark-chart" url="/personal-site/data/count-min-sketch-algorithm-insertion-speed-benchmark.json" title="Insertion Speed" xlabel="Number of Distinct Elements" ylabel="Time (Seconds)" width="80%" >}}
+{{< chartjs id="count-min-sketch-algorithm-insertion-speed-benchmark-chart" url="/data/count-min-sketch-algorithm-insertion-speed-benchmark.json" title="Insertion Speed" xlabel="Number of Distinct Elements" ylabel="Time (Seconds)" width="80%" >}}
 {{< /chartjs >}}
 
 ### Conclusion
