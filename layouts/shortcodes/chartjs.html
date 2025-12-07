@@ -1,0 +1,106 @@
+<div style="position: relative; height: {{ .Get "height" | default "400px" }}; width: {{ .Get "width" | default "100%" }}; margin: 40px auto;">
+    <canvas id="{{ .Get "id" }}"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    (async function() {
+        const styles = getComputedStyle(document.body);
+        const fontFamily = styles.getPropertyValue('--font-family').trim();
+        const textColor = styles.getPropertyValue('--text-color').trim();
+        const titleColor = styles.getPropertyValue('--color-blue').trim();
+
+        Chart.defaults.font.family = fontFamily;
+        Chart.defaults.color = textColor;
+        Chart.defaults.scale.grid.color = "rgba(0,0,0,0.05)"; 
+
+        const ctx = document.getElementById('{{ .Get "id" }}');
+        
+        let chartData;
+        const dataUrl = '{{ .Get "url" }}';
+
+        if (dataUrl) {
+            try {
+                const response = await fetch(dataUrl);
+                chartData = await response.json();
+            } catch (error) {
+                console.error("Erro:", error);
+            }
+        } else {
+            {{ $innerContent := trim .Inner " \r\n" }}
+            chartData = {{ if $innerContent }} {{ $innerContent | safeJS }} {{ else }} null {{ end }};
+        }
+
+        if (chartData) {
+            new Chart(ctx, {
+                type: '{{ .Get "type" | default "line" }}',
+                data: chartData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: {
+                        duration: 1000,
+                        easing: 'easeOutQuart'
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        title: { 
+                            display: true, 
+                            text: '{{ .Get "title" }}',
+                            color: titleColor,
+                            font: { size: 12, weight: 'bold', family: fontFamily },
+                            padding: { bottom: 20 }
+                        },
+                        legend: {
+                            labels: { usePointStyle: true, boxWidth: 8 }
+                        },
+                        tooltip: {
+                            enabled: true,
+                            backgroundColor: 'rgba(33, 33, 33, 0.9)',
+                            titleFont: { family: fontFamily },
+                            bodyFont: { family: fontFamily },
+                            callbacks: {
+                              label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                  label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                  label += new Intl.NumberFormat('en-US').format(context.parsed.y);
+                                }
+                                return label;
+                              }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { 
+                            title: { display: true, text: '{{ .Get "xlabel" }}', font: { weight: 'bold' } },
+                            ticks: {
+                                maxTicksLimit: 12,
+                                autoSkip: true,
+                                maxRotation: 0
+                            }
+                        },
+                        y: { 
+                            title: { display: true, text: '{{ .Get "ylabel" }}', font: { weight: 'bold' } },
+                            border: { display: false },
+                            ticks: {
+                              callback: function(value, index, values) {
+                                return new Intl.NumberFormat('en-US', {
+                                  notation: "compact",
+                                  compactDisplay: "short",
+                                  maximumFractionDigits: 1
+                                }).format(value);
+                               }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    })();
+</script>

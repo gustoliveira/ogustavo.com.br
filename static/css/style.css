@@ -3,6 +3,15 @@
   --primary-color: #FFF8EA;
   --primary-color-accent: #FFCD6A;
   --primary-color-light: #FAEACA;
+
+  --custom-green: #2D6A4F;
+  --custom-green-alpha: #2D6A4F30; /* 20% opacity */
+
+  --custom-blue: #3D5A80;
+  --custom-blue-alpha: #2D6A4F30; /* 20% opacity */
+
+  --custom-red: #E63946;
+  --custom-red-alpha: #E6394630; /* 20% opacity */
 }
 
 header {
