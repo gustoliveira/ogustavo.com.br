@@ -8,6 +8,13 @@ theme = 'blank'
   description = 'Software Engineer and Computer Science Student sharing insights on algorithms, mobile development, and software engineering.'
   author = 'Gustavo de Oliveira Ferreira'
 
+enableRobotsTXT = true
+
+[sitemap]
+  changefreq = 'monthly'
+  filename = 'sitemap.xml'
+  priority = 0.5
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]

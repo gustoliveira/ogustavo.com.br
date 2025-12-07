@@ -1,0 +1,35 @@
+# Allow all search engines and crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.ogustavo.com.br/sitemap.xml
+
+# AI/LLM Crawlers - Allow with rate limiting consideration
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /
+
+# Google Gemini
+User-agent: Google-Extended
+Allow: /
+
+# Anthropic Claude
+User-agent: anthropic-ai
+Allow: /
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+
+# Perplexity AI
+User-agent: PerplexityBot
+Allow: /
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /

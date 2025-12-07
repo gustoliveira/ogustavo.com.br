@@ -2,6 +2,7 @@
 title: "Fun with Overflowing Integers"
 date: 2025-02-21
 draft: true
+description: "A deep dive into integer overflow detection and handling in Go, exploring bitwise operations and creating a safe math library for time tracking applications."
 comments:
   - text: "If the overflow happens on the lower end of the range, it's technically called 'underflow'"
   - text: "In C++ for example, signed integer overflow is undefined behaviour"
