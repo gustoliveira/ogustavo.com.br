@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ .Title }}</title>
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ if .Params.description }}
+      <meta name="description" content="{{ .Params.description }}">
+    {{ else if .Description }}
+      <meta name="description" content="{{ .Description }}">
+    {{ else }}
+      {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ end }}
     {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
     {{ with .OutputFormats.Get "RSS" -}}

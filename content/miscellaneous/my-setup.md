@@ -2,6 +2,7 @@
 title: "My Setup"
 subtitle: "What I use daily to stay ✨ efficient ✨"
 draft: false
+description: "My daily development setup including hardware specs, custom Sofle V2 keyboard, software tools, and productivity apps for efficient software engineering."
 ---
 
 ### Computer Config

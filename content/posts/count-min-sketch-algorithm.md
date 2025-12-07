@@ -2,6 +2,7 @@
 title: "Count-Min Sketch: Estimating Event Frequencies in Massive Data Streams"
 date: 2025-02-14
 draft: false
+description: "Learn how the Count-Min Sketch probabilistic data structure efficiently estimates event frequencies in massive data streams using sub-linear space complexity."
 comments:
   - text: "If the overflow happens on the lower end of the range, it's technically called 'underflow'"
   - text: "In C++ for example, signed integer overflow is undefined behaviour"

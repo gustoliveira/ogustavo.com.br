@@ -2,6 +2,7 @@
 title: "Tech Tools"
 subtitle: "Programs and tools I use everyday"
 draft: false
+description: "Essential development tools and programs I use daily including Neovim, tmux, ghostty terminal emulator, fzf, and other productivity utilities."
 ---
 
 ### Neovim

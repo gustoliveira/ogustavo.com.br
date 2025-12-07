@@ -2,6 +2,7 @@
 title: "Material and Flutter: A New Standard and an Old Debate in the Community"
 date: 2025-05-16
 draft: false
+description: "Explore the ongoing debate about Material Design's coupling with Flutter, challenges with Material 3 Expressive, and the community's perspective on framework dependencies."
 ---
 
 This Tuesday, the new thematic standard for Android was officially revealed: Material 3 Expressive, aiming to bring a more modern system with many animations.

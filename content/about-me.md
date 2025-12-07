@@ -1,6 +1,7 @@
 ---
 title: "About me"
 type: "about-me"
+description: "Software Engineer based in Salvador, Brazil, specializing in mobile development with Flutter and Kotlin. Computer Science student at UFBA passionate about programming."
 ---
 
 ![](/images/vulgogustavo.jpg#floatleft)

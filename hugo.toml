@@ -4,6 +4,10 @@ title = 'Gustavo de Oliveira Ferreira'
 
 theme = 'blank'
 
+[params]
+  description = 'Software Engineer and Computer Science Student sharing insights on algorithms, mobile development, and software engineering.'
+  author = 'Gustavo de Oliveira Ferreira'
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]
