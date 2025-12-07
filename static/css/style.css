@@ -373,27 +373,34 @@ td:not(:first-child) {
   white-space: nowrap;
   overflow: hidden;
 
-  animation: typing 1.8s steps(34, end) 1s 1 normal both,
-    blinking-cursor 700ms steps(34) infinite normal both;
+  animation: typing 5s steps(17, end) infinite,
+    blinking-cursor 700ms steps(2) infinite;
 }
 
 @keyframes typing {
-  from {
-    width: 0
+  0%, 10% {
+    width: 0;
   }
-
-  to {
-    width: 204px
+  35% {
+    width: 204px;
+  }
+  65% {
+    width: 204px;
+  }
+  90% {
+    width: 0;
+  }
+  100% {
+    width: 0;
   }
 }
 
 @keyframes blinking-cursor {
-  from {
-    border-right-color: transparent
+  0%, 100% {
+    border-right-color: var(--primary-color-accent);
   }
-
-  to {
-    border-right-color: var(--primary-color-accent)
+  50% {
+    border-right-color: transparent;
   }
 }
 
